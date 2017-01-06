@@ -1,0 +1,6 @@
+class ChangeColumnsUsers < ActiveRecord::Migration
+  def change
+  	change_column_null :username, :nickname, false
+		change_column_default :username, :qualification, '名無し'
+  end
+end

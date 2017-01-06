@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  detail: MyString
+  user_id: 1
+  subject_id: 1
+  order: 1
+
+two:
+  detail: MyString
+  user_id: 1
+  subject_id: 1
+  order: 1

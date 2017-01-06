@@ -1,0 +1,18 @@
+<h2><%= @subject.title %></h2>
+
+<% @comments.each_with_index do |comment, index| %>
+	<p><%= "#{index.to_i + 1}" %> : <%= comment.user.username %> : <%= comment.created_at %></p>
+	<p><%= simple_format(comment.detail) %></p>
+	<br>
+<% end %>
+
+<br>
+<h3>コメントの投稿</h3>
+<%= form_for @comment, :url => {:controller => 'comments', :action => 'create'} do |f| %>
+  <%= f.label :detail, "本文" %><br>
+  <%= f.text_area :detail %><br>
+  <%= f.submit "投稿" %>
+<% end %>
+
+<br><br>
+<%= link_to "スレッド一覧へ戻る", subjects_index_path %>

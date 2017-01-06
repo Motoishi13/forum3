@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forum3</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header>
+        <nav>
+        		掲示板 
+        		&nbsp;&nbsp;
+        		<%= link_to 'TOP', :root %>
+        		&nbsp;&nbsp;
+        		<%= link_to 'スレッド一覧', subjects_index_path %>
+        		<%= link_to 'スレッド作成', subject_new_path %>
+        		&nbsp;&nbsp;
+            <% if user_signed_in? %>
+            <!--<strong><%= link_to current_user.username, pages_show_path %></strong>-->
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <% else %>
+            <%= link_to '新規登録', new_user_registration_path %>
+            <%= link_to 'ログイン', new_user_session_path %>
+            <% end %>
+        </nav>
+        <br>
+    </header>
+
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+
+	<%= yield %>
+
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<h1>スレッド一覧</h1>
+
+<table border=1>
+	<tr><th>スレッド名</th><th>作成者</th><th>作成日時</th><th>編集</th><th>削除</th><tr>
+	<% @subjects.each do |subject| %>
+		<tr><td><%= link_to subject.title , subjects_show_path(subject.id) %></td>
+		<td><%= subject.user.username%></td>
+		<td><%= subject.created_at %></td>
+		<td>
+			<% if subject.user_id == current_user.id %>
+				<%= link_to "編集" , subjects_edit_path(subject.id) %>
+			<% end %>
+		</td>
+		<td>
+			<% if subject.user_id == current_user.id %>
+				<%= link_to "削除" , subjects_destroy_path(subject.id), method: :delete, data: {confirm: "本当に削除しますか?"} %>
+			<% end %>
+		</td><tr>				
+	<% end %>
+</table>
+<br>
+<%= link_to "TOPへ戻る", :root %>
+

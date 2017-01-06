@@ -1,0 +1,8 @@
+<h1>スレッド新規作成</h1>
+<%= form_for @subject, :url => {:action => 'create'} do |f| %>
+  <%= f.label :title, "スレッド名" %>
+  <%= f.text_field :title %>
+  <%= f.submit "作成" %>
+<% end %>
+
+<%= link_to "TOPへ戻る", :root %>
